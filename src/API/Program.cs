@@ -6,6 +6,7 @@ using Application.Mapping;
 using Application.Services;
 using Application.Interfaces.Services;
 using Application.Interfaces.Repositories;
+using API.Middleware;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +21,6 @@ builder.Services.AddScoped<IItemRepository, ItemRepository>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IItemService, ItemService>();
 
@@ -38,6 +38,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 

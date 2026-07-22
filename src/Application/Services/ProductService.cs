@@ -1,3 +1,4 @@
+using Domain.Exceptions;
 using Application.DTOs.Product;
 using Application.Interfaces;
 using Application.Interfaces.Repositories;
@@ -48,7 +49,10 @@ public class ProductService : IProductService
 
         await _productRepository.AddAsync(product);
 
-        await _unitOfWork.SaveChangesAsync();
+        var result = await _unitOfWork.SaveChangesAsync();
+
+        if (result <= 0)
+            throw new BadRequestException("Unable to create product.");
 
         return _mapper.Map<ProductDto>(product);
     }
@@ -57,8 +61,8 @@ public class ProductService : IProductService
     {
         var product = await _productRepository.GetByIdAsync(id);
 
-        if (product == null)
-            return false;
+       if (product == null)
+          throw new NotFoundException($"Product with Id {id} was not found.");
 
         product.ProductName = dto.ProductName;
         product.ModifiedBy = dto.ModifiedBy;
@@ -66,7 +70,10 @@ public class ProductService : IProductService
 
         _productRepository.Update(product);
 
-        await _unitOfWork.SaveChangesAsync();
+        var result = await _unitOfWork.SaveChangesAsync();
+
+        if (result <= 0)
+            throw new BadRequestException("Unable to update product.");
 
         return true;
     }
@@ -76,11 +83,14 @@ public class ProductService : IProductService
         var product = await _productRepository.GetByIdAsync(id);
 
         if (product == null)
-            return false;
+           throw new NotFoundException($"Product with Id {id} was not found.");
 
         _productRepository.Delete(product);
 
-        await _unitOfWork.SaveChangesAsync();
+        var result = await _unitOfWork.SaveChangesAsync();
+
+        if (result <= 0)
+            throw new BadRequestException("Unable to delete product.");
 
         return true;
     }

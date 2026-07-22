@@ -1,3 +1,4 @@
+using Domain.Exceptions;
 using Application.DTOs.Item;
 using Application.Interfaces;
 using Application.Interfaces.Repositories;
@@ -46,7 +47,10 @@ public class ItemService : IItemService
 
         await _itemRepository.AddAsync(item);
 
-        await _unitOfWork.SaveChangesAsync();
+        var result = await _unitOfWork.SaveChangesAsync();
+
+        if (result <= 0)
+            throw new BadRequestException("Unable to create item.");
 
         return _mapper.Map<ItemDto>(item);
     }
@@ -56,13 +60,16 @@ public class ItemService : IItemService
         var item = await _itemRepository.GetByIdAsync(id);
 
         if (item == null)
-            return false;
+            throw new NotFoundException($"Item with Id {id} was not found.");
 
         item.Quantity = dto.Quantity;
 
         _itemRepository.Update(item);
 
-        await _unitOfWork.SaveChangesAsync();
+        var result = await _unitOfWork.SaveChangesAsync();
+
+        if (result <= 0)
+            throw new BadRequestException("Unable to update item.");
 
         return true;
     }
@@ -72,11 +79,14 @@ public class ItemService : IItemService
         var item = await _itemRepository.GetByIdAsync(id);
 
         if (item == null)
-            return false;
+            throw new NotFoundException($"Item with Id {id} was not found.");
 
         _itemRepository.Delete(item);
 
-        await _unitOfWork.SaveChangesAsync();
+        var result = await _unitOfWork.SaveChangesAsync();
+
+        if (result <= 0)
+            throw new BadRequestException("Unable to delete item.");
 
         return true;
     }
