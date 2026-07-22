@@ -1,5 +1,12 @@
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Application.Interfaces;
+using Infrastructure.Repositories;
+using Application.Mapping;
+using Application.Services;
+using Application.Interfaces.Services;
+using Application.Interfaces.Repositories;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +14,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IItemRepository, ItemRepository>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IItemService, ItemService>();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddControllers();
 
