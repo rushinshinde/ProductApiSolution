@@ -31,12 +31,12 @@ public class ItemService : IItemService
         return _mapper.Map<IEnumerable<ItemDto>>(items);
     }
 
-    public async Task<ItemDto?> GetByIdAsync(int id)
+    public async Task<ItemDto> GetByIdAsync(int id)
     {
         var item = await _itemRepository.GetByIdAsync(id);
 
         if (item == null)
-            return null;
+           throw new NotFoundException($"Item with Id {id} was not found.");
 
         return _mapper.Map<ItemDto>(item);
     }

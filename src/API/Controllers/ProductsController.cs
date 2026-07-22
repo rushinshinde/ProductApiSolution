@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/[controller]")]
 public class ProductsController : ControllerBase
 {
     private readonly IProductService _productService;
@@ -15,7 +16,7 @@ public class ProductsController : ControllerBase
         _productService = productService;
     }
 
-    // GET: api/v1/products
+    // GET: api/v1/Products
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -23,50 +24,39 @@ public class ProductsController : ControllerBase
         return Ok(products);
     }
 
-    // GET: api/v1/products/1
+    // GET: api/v1/Products/1
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
         var product = await _productService.GetByIdAsync(id);
-
-        if (product == null)
-            return NotFound(new { message = "Product not found." });
-
         return Ok(product);
     }
 
-    // POST: api/v1/products
+    // POST: api/v1/Products
     [HttpPost]
     public async Task<IActionResult> Create(CreateProductDto dto)
     {
         var product = await _productService.CreateAsync(dto);
 
-        return CreatedAtAction(nameof(GetById),
-            new { id = product.Id },
+        return CreatedAtAction(
+            nameof(GetById),
+            new { version = "1.0", id = product.Id },
             product);
     }
 
-    // PUT: api/v1/products/1
+    // PUT: api/v1/Products/1
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, UpdateProductDto dto)
     {
-        var updated = await _productService.UpdateAsync(id, dto);
-
-        if (!updated)
-            return NotFound(new { message = "Product not found." });
-
+        await _productService.UpdateAsync(id, dto);
         return NoContent();
     }
 
-    // DELETE: api/v1/products/1
+    // DELETE: api/v1/Products/1
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        var deleted = await _productService.DeleteAsync(id);
-
-        if (!deleted)
-            return NotFound(new { message = "Product not found." });
-
+        await _productService.DeleteAsync(id);
         return NoContent();
     }
 }

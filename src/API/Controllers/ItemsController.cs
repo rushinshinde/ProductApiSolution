@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/[controller]")]
 public class ItemsController : ControllerBase
 {
     private readonly IItemService _itemService;
@@ -15,7 +16,7 @@ public class ItemsController : ControllerBase
         _itemService = itemService;
     }
 
-    // GET: api/v1/items
+    // GET: api/v1/Items
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -23,50 +24,39 @@ public class ItemsController : ControllerBase
         return Ok(items);
     }
 
-    // GET: api/v1/items/1
+    // GET: api/v1/Items/1
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
         var item = await _itemService.GetByIdAsync(id);
-
-        if (item == null)
-            return NotFound(new { message = "Item not found." });
-
         return Ok(item);
     }
 
-    // POST: api/v1/items
+    // POST: api/v1/Items
     [HttpPost]
     public async Task<IActionResult> Create(CreateItemDto dto)
     {
         var item = await _itemService.CreateAsync(dto);
 
-        return CreatedAtAction(nameof(GetById),
-            new { id = item.Id },
+        return CreatedAtAction(
+            nameof(GetById),
+            new { version = "1.0", id = item.Id },
             item);
     }
 
-    // PUT: api/v1/items/1
+    // PUT: api/v1/Items/1
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, UpdateItemDto dto)
     {
-        var updated = await _itemService.UpdateAsync(id, dto);
-
-        if (!updated)
-            return NotFound(new { message = "Item not found." });
-
+        await _itemService.UpdateAsync(id, dto);
         return NoContent();
     }
 
-    // DELETE: api/v1/items/1
+    // DELETE: api/v1/Items/1
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        var deleted = await _itemService.DeleteAsync(id);
-
-        if (!deleted)
-            return NotFound(new { message = "Item not found." });
-
+        await _itemService.DeleteAsync(id);
         return NoContent();
     }
 }
