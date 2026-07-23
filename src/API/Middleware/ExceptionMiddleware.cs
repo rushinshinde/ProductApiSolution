@@ -26,12 +26,14 @@ public class ExceptionMiddleware
         {
             await HandleException(context, StatusCodes.Status400BadRequest, ex.Message);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            Console.WriteLine(ex.ToString());
+
             await HandleException(
                 context,
                 StatusCodes.Status500InternalServerError,
-                "An unexpected error occurred.");
+                ex.Message);
         }
     }
 

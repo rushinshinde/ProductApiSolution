@@ -180,3 +180,7 @@ C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\src\API\bin\Debug\net8.0\tr
 C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\src\API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\src\API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\src\API\bin\Debug\net8.0\BCrypt-Net-Next.dll
+C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\src\API\bin\Debug\net8.0\Microsoft.Bcl.Cryptography.dll
+C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\src\API\bin\Debug\net8.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\src\API\bin\Debug\net8.0\System.Formats.Asn1.dll
+C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\src\API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
