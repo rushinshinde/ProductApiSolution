@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "wSiLG2FNZ+U=",
+  "dgSpecHash": "I9gc53p5rys=",
   "success": true,
   "projectFilePath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sheet\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\sheet\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
     "C:\\Users\\sheet\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
     "C:\\Users\\sheet\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\sheet\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.27\\microsoft.aspnetcore.app.ref.8.0.27.nupkg.sha512",

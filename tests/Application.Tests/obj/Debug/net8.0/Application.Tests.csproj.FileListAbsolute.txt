@@ -111,3 +111,4 @@ C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\tests\Application.Tests\obj
 C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\tests\Application.Tests\obj\Debug\net8.0\Application.Tests.pdb
 C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\tests\Application.Tests\obj\Debug\net8.0\Application.Tests.genruntimeconfig.cache
 C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\tests\Application.Tests\obj\Debug\net8.0\ref\Application.Tests.dll
+C:\Users\sheet\OneDrive\Desktop\ProductApiAssessment\tests\Application.Tests\bin\Debug\net8.0\BCrypt-Net-Next.dll

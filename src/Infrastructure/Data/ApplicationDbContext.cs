@@ -14,6 +14,8 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Item> Items => Set<Item>();
 
+    public DbSet<User> Users => Set<User>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
