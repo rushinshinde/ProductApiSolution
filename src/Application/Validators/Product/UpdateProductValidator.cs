@@ -7,12 +7,18 @@ public class UpdateProductValidator : AbstractValidator<UpdateProductDto>
 {
     public UpdateProductValidator()
     {
-        RuleFor(x => x.ProductName)
-            .NotEmpty()
-            .MaximumLength(255);
+       RuleFor(x => x.ProductName)
+    .NotEmpty()
+    .MaximumLength(255);
 
-        RuleFor(x => x.ModifiedBy)
-            .NotEmpty()
-            .MaximumLength(100);
+    RuleFor(x => x.Price)
+        .GreaterThan(0);
+
+    RuleFor(x => x.Stock)
+        .GreaterThanOrEqualTo(0);
+
+    RuleFor(x => x.ModifiedBy)
+        .NotEmpty()
+        .MaximumLength(100);
     }
 }

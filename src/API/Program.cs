@@ -79,6 +79,20 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 // Controllers
 builder.Services.AddControllers();
 
+builder.Services.AddHealthChecks();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
+
 // API Versioning
 builder.Services.AddApiVersioning(options =>
 {
@@ -141,7 +155,11 @@ if (app.Environment.IsDevelopment())
 // Global Exception Middleware
 app.UseMiddleware<ExceptionMiddleware>();
 
+app.UseSerilogRequestLogging();
+
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthentication();
 
@@ -149,17 +167,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-try
-{
-    Log.Information("Starting Product API...");
+app.MapHealthChecks("/health");
 
-    app.Run();
-}
-catch (Exception ex)
+app.Run();
+
+public partial class Program
 {
-    Log.Fatal(ex, "Application terminated unexpectedly.");
-}
-finally
-{
-    Log.CloseAndFlush();
 }

@@ -1,4 +1,5 @@
 using Application.DTOs.Auth;
+using Application.DTOs.Common;
 using Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,10 +23,12 @@ public class AuthController : ControllerBase
     {
         await _authService.RegisterAsync(request);
 
-        return Ok(new
+        return Ok(new ApiResponse<string>
         {
             Success = true,
-            Message = "User registered successfully."
+            StatusCode = StatusCodes.Status200OK,
+            Message = "User registered successfully.",
+            Data = null
         });
     }
 
@@ -35,6 +38,27 @@ public class AuthController : ControllerBase
     {
         var result = await _authService.LoginAsync(request);
 
-        return Ok(result);
+        return Ok(new ApiResponse<LoginResponseDto>
+        {
+            Success = true,
+            StatusCode = StatusCodes.Status200OK,
+            Message = "Login successful.",
+            Data = result
+        });
+    }
+
+    // POST: api/v1/Auth/RefreshToken
+    [HttpPost("RefreshToken")]
+    public async Task<IActionResult> RefreshToken(RefreshTokenRequestDto request)
+    {
+        var result = await _authService.RefreshTokenAsync(request);
+
+        return Ok(new ApiResponse<LoginResponseDto>
+        {
+            Success = true,
+            StatusCode = StatusCodes.Status200OK,
+            Message = "Token refreshed successfully.",
+            Data = result
+        });
     }
 }

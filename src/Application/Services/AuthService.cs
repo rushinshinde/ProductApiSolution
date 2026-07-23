@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Application.Exceptions;
 using Application.Common;
 using Application.DTOs.Auth;
 using Application.Interfaces;
@@ -28,53 +29,71 @@ public class AuthService : IAuthService
         _jwtSettings = jwtOptions.Value;
     }
 
+
     public async Task RegisterAsync(RegisterRequestDto request)
     {
-        var existingUser = await _userRepository.GetByUsernameAsync(request.Username);
+        var existingUser =
+            await _userRepository.GetByUsernameAsync(request.Username);
 
         if (existingUser != null)
-            throw new Exception("Username already exists.");
+            throw new BadRequestException("Username already exists.");
+
 
         var user = new User
         {
             Username = request.Username,
-            PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password)
+            PasswordHash =
+                BCrypt.Net.BCrypt.HashPassword(request.Password)
         };
+
 
         await _userRepository.AddAsync(user);
 
         await _unitOfWork.SaveChangesAsync();
     }
 
-    public async Task<LoginResponseDto> LoginAsync(LoginRequestDto request)
+
+    public async Task<LoginResponseDto> RefreshTokenAsync(
+        RefreshTokenRequestDto request)
     {
-        var user = await _userRepository.GetByUsernameAsync(request.Username);
+        var user =
+            await _userRepository
+            .GetByRefreshTokenAsync(request.RefreshToken);
+
 
         if (user == null)
-            throw new Exception("Invalid username or password.");
+            throw new UnauthorizedException("Invalid refresh token.");
 
-        var validPassword = BCrypt.Net.BCrypt.Verify(
-            request.Password,
-            user.PasswordHash);
 
-        if (!validPassword)
-            throw new Exception("Invalid username or password.");
+        if (user.RefreshTokenExpiryTime <= DateTime.UtcNow)
+           throw new UnauthorizedException("Refresh token expired.");
+
 
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Name, user.Username)
+            new Claim(
+                ClaimTypes.NameIdentifier,
+                user.Id.ToString()),
+
+            new Claim(
+                ClaimTypes.Name,
+                user.Username)
         };
+
 
         var key = new SymmetricSecurityKey(
             Encoding.UTF8.GetBytes(_jwtSettings.Key));
+
 
         var credentials = new SigningCredentials(
             key,
             SecurityAlgorithms.HmacSha256);
 
-        var expires = DateTime.UtcNow.AddMinutes(
-            _jwtSettings.DurationInMinutes);
+
+        var expires =
+            DateTime.UtcNow.AddMinutes(
+                _jwtSettings.DurationInMinutes);
+
 
         var token = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,
@@ -83,10 +102,115 @@ public class AuthService : IAuthService
             expires: expires,
             signingCredentials: credentials);
 
+
+
+        var newRefreshToken = GenerateRefreshToken();
+
+
+        user.RefreshToken = newRefreshToken;
+
+        user.RefreshTokenExpiryTime =
+            DateTime.UtcNow.AddDays(7);
+
+
+
+        await _unitOfWork.SaveChangesAsync();
+
+
         return new LoginResponseDto
         {
-            Token = new JwtSecurityTokenHandler().WriteToken(token),
+            Token =
+                new JwtSecurityTokenHandler()
+                .WriteToken(token),
+
+            RefreshToken = newRefreshToken,
+
             Expiration = expires
         };
+    }
+
+public async Task<LoginResponseDto> LoginAsync(LoginRequestDto request)
+{
+    var user = await _userRepository
+        .GetByUsernameAsync(request.Username);
+
+    if (user == null)
+        throw new UnauthorizedException("Invalid username or password.");
+
+
+    var isPasswordValid =
+        BCrypt.Net.BCrypt.Verify(
+            request.Password,
+            user.PasswordHash);
+
+
+    if (!isPasswordValid)
+        throw new UnauthorizedException("Invalid username or password.");
+
+
+    var claims = new List<Claim>
+    {
+        new Claim(
+            ClaimTypes.NameIdentifier,
+            user.Id.ToString()),
+
+        new Claim(
+            ClaimTypes.Name,
+            user.Username)
+    };
+
+
+    var key = new SymmetricSecurityKey(
+        Encoding.UTF8.GetBytes(_jwtSettings.Key));
+
+
+    var credentials = new SigningCredentials(
+        key,
+        SecurityAlgorithms.HmacSha256);
+
+
+    var expires =
+        DateTime.UtcNow.AddMinutes(
+            _jwtSettings.DurationInMinutes);
+
+
+    var token = new JwtSecurityToken(
+        issuer: _jwtSettings.Issuer,
+        audience: _jwtSettings.Audience,
+        claims: claims,
+        expires: expires,
+        signingCredentials: credentials);
+
+
+
+    var refreshToken = GenerateRefreshToken();
+
+
+    user.RefreshToken = refreshToken;
+
+    user.RefreshTokenExpiryTime =
+        DateTime.UtcNow.AddDays(7);
+
+
+
+    await _unitOfWork.SaveChangesAsync();
+
+
+    return new LoginResponseDto
+    {
+        Token =
+            new JwtSecurityTokenHandler()
+            .WriteToken(token),
+
+        RefreshToken = refreshToken,
+
+        Expiration = expires
+    };
+}
+
+    private static string GenerateRefreshToken()
+    {
+        return Guid.NewGuid().ToString("N")
+             + Guid.NewGuid().ToString("N");
     }
 }

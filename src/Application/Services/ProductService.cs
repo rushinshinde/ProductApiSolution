@@ -1,10 +1,11 @@
-using Domain.Exceptions;
+using Application.Exceptions;
 using Application.DTOs.Product;
 using Application.Interfaces;
 using Application.Interfaces.Repositories;
 using Application.Interfaces.Services;
 using AutoMapper;
 using Domain.Entities;
+using Application.DTOs.Common;
 
 namespace Application.Services;
 
@@ -31,16 +32,22 @@ public class ProductService : IProductService
         return _mapper.Map<IEnumerable<ProductDto>>(products);
     }
 
-    public async Task<ProductDto?> GetByIdAsync(int id)
+   public async Task<ProductDto> GetByIdAsync(int id)
     {
         var product = await _productRepository.GetByIdAsync(id);
 
         if (product == null)
-            return null;
+            throw new NotFoundException($"Product with Id {id} was not found.");
 
         return _mapper.Map<ProductDto>(product);
     }
 
+    public async Task<IEnumerable<ProductDto>> GetPagedAsync(PaginationParams paginationParams)
+    {
+        var products = await _productRepository.GetPagedAsync(paginationParams);
+
+        return _mapper.Map<IEnumerable<ProductDto>>(products);
+    }
     public async Task<ProductDto> CreateAsync(CreateProductDto dto)
     {
         var product = _mapper.Map<Product>(dto);
