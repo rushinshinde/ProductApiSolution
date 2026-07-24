@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IEMmtQTWffQ=",
+  "dgSpecHash": "Xsrgecvy4Bk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "D:\\ProductApiAssessment\\src\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sheet\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\sheet\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\tests\\API.Tests\\API.Tests.csproj": {}
+    "D:\\ProductApiAssessment\\tests\\API.Tests\\API.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\API\\API.csproj": {
+    "D:\\ProductApiAssessment\\src\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\API\\API.csproj",
+        "projectUniqueName": "D:\\ProductApiAssessment\\src\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\API\\API.csproj",
+        "projectPath": "D:\\ProductApiAssessment\\src\\API\\API.csproj",
         "packagesPath": "C:\\Users\\sheet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\API\\obj\\",
+        "outputPath": "D:\\ProductApiAssessment\\src\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
             "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Application\\Application.csproj"
+              "D:\\ProductApiAssessment\\src\\Application\\Application.csproj": {
+                "projectPath": "D:\\ProductApiAssessment\\src\\Application\\Application.csproj"
               },
-              "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Infrastructure\\Infrastructure.csproj"
+              "D:\\ProductApiAssessment\\src\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "D:\\ProductApiAssessment\\src\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -151,14 +151,14 @@
         }
       }
     },
-    "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Application\\Application.csproj": {
+    "D:\\ProductApiAssessment\\src\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\ProductApiAssessment\\src\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Application\\Application.csproj",
+        "projectPath": "D:\\ProductApiAssessment\\src\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\sheet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Application\\obj\\",
+        "outputPath": "D:\\ProductApiAssessment\\src\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -180,8 +180,8 @@
             "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Domain\\Domain.csproj"
+              "D:\\ProductApiAssessment\\src\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\ProductApiAssessment\\src\\Domain\\Domain.csproj"
               }
             }
           }
@@ -262,14 +262,14 @@
         }
       }
     },
-    "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Domain\\Domain.csproj": {
+    "D:\\ProductApiAssessment\\src\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\ProductApiAssessment\\src\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Domain\\Domain.csproj",
+        "projectPath": "D:\\ProductApiAssessment\\src\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\sheet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Domain\\obj\\",
+        "outputPath": "D:\\ProductApiAssessment\\src\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -343,14 +343,14 @@
         }
       }
     },
-    "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\ProductApiAssessment\\src\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\ProductApiAssessment\\src\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "D:\\ProductApiAssessment\\src\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\sheet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Infrastructure\\obj\\",
+        "outputPath": "D:\\ProductApiAssessment\\src\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -372,11 +372,11 @@
             "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Application\\Application.csproj"
+              "D:\\ProductApiAssessment\\src\\Application\\Application.csproj": {
+                "projectPath": "D:\\ProductApiAssessment\\src\\Application\\Application.csproj"
               },
-              "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Domain\\Domain.csproj"
+              "D:\\ProductApiAssessment\\src\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\ProductApiAssessment\\src\\Domain\\Domain.csproj"
               }
             }
           }
@@ -453,14 +453,14 @@
         }
       }
     },
-    "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\tests\\API.Tests\\API.Tests.csproj": {
+    "D:\\ProductApiAssessment\\tests\\API.Tests\\API.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\tests\\API.Tests\\API.Tests.csproj",
+        "projectUniqueName": "D:\\ProductApiAssessment\\tests\\API.Tests\\API.Tests.csproj",
         "projectName": "API.Tests",
-        "projectPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\tests\\API.Tests\\API.Tests.csproj",
+        "projectPath": "D:\\ProductApiAssessment\\tests\\API.Tests\\API.Tests.csproj",
         "packagesPath": "C:\\Users\\sheet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\tests\\API.Tests\\obj\\",
+        "outputPath": "D:\\ProductApiAssessment\\tests\\API.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -482,8 +482,8 @@
             "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\API\\API.csproj": {
-                "projectPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\API\\API.csproj"
+              "D:\\ProductApiAssessment\\src\\API\\API.csproj": {
+                "projectPath": "D:\\ProductApiAssessment\\src\\API\\API.csproj"
               }
             }
           }

@@ -1,2 +1,0 @@
-2026-07-23 22:10:51.011 +05:30 [WRN] Failed to determine the https port for redirect.
-2026-07-23 22:10:51.803 +05:30 [INF] HTTP GET /health responded 200 in 818.3908 ms

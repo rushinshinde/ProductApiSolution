@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Domain\\Domain.csproj",
+      "projectUniqueName": "D:\\ProductApiAssessment\\src\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Domain\\Domain.csproj",
+      "projectPath": "D:\\ProductApiAssessment\\src\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\sheet\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sheet\\OneDrive\\Desktop\\ProductApiAssessment\\src\\Domain\\obj\\",
+      "outputPath": "D:\\ProductApiAssessment\\src\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

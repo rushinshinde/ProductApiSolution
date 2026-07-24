@@ -1,4 +1,4 @@
-using Domain.Exceptions;
+using Application.Exceptions;
 using Application.DTOs.Item;
 using Application.Interfaces;
 using Application.Interfaces.Repositories;

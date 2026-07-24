@@ -1,1 +1,4 @@
 2026-07-23 21:22:44.794 +05:30 [INF] Starting Product API...
+2026-07-23 22:30:17.322 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-07-23 22:30:17.501 +05:30 [INF] HTTP GET /health responded 200 in 182.2841 ms
+2026-07-23 22:30:18.255 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 4.0002 ms
